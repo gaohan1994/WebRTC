@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {   
+        "module": "esnext",
+        "target": "esnext",
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "declaration": true,
+        "useDefineForClassFields": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true, 
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+    },
+    "include": ["src"], 
+  }
+  

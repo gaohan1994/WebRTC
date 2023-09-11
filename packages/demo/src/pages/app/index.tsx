@@ -1,11 +1,11 @@
 import { Fragment, memo } from "react";
 import Devices from "../devices";
-import MediaStream from "../media-stream";
+import Connection from "../connection";
 
 const App = () => (
   <Fragment>
     <Devices />
-    <MediaStream />
+    <Connection />
   </Fragment>
 );
 

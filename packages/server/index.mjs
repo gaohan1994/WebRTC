@@ -1,8 +1,8 @@
 import http from "node:http";
 import log4js from "log4js";
 import express from "express";
-import { Server } from "socket.io";
 import serveIndex from "serve-index";
+import { Server } from "socket.io";
 import { ROOM_MAX_USER_COUNT } from "./src/constants.mjs";
 
 log4js.configure({
@@ -25,6 +25,7 @@ log4js.configure({
 });
 
 const logger = log4js.getLogger();
+logger.level = "debug";
 
 const app = express();
 app.use(serveIndex("./public"));
@@ -47,13 +48,14 @@ app.all("*", (req, res, next) => {
   }
 });
 
-app.get("/hello", (req, res) => {
-  res.send("<h1>hello</h1>");
-});
-
 const httpServer = http.createServer(app, "0.0.0.0");
 
-const io = new Server(httpServer);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "http://localhost:5173",
+    credentials: true,
+  },
+});
 
 io.sockets.on("connection", (socket) => {
   socket.on("join", (room) => {
